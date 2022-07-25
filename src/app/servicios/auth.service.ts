@@ -60,10 +60,16 @@ export class AuthService {
     alert("Debe logearse nuevamente");
     this.logout();
   }
-  registrarUsuario(registro: Registro): Observable<any>{
+  // registrarUsuario(registro: Registro): Observable<any>{
+  //   const res= JSON.stringify(registro);
+  //   console.log(res);
+  //   return this.http.post('https://wsproyecto.somee.com/api/LoginCliente/Registro', res, httpOptions);
+  // }
+
+  AE_registrarUsuario(registro: Registro): Observable<any>{
     const res= JSON.stringify(registro);
     console.log(res);
-    return this.http.post('https://wsproyecto.somee.com/api/LoginCliente/Registro', res, httpOptions);
+    return this.http.post('https://wsproyecto.somee.com/api/LoginCliente/RegistroExamen', res, httpOptions);
   }
   logout() {
     localStorage.removeItem('Usuario');
