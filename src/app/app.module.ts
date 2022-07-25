@@ -28,8 +28,10 @@ import { ProductosPageModule } from './pages/productos/productos.module';
        MenuComponent,
 
    ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-       HttpClientModule,Ng2SearchPipeModule, LoginPageModule,
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,Ng2SearchPipeModule, LoginPageModule,
        ReactiveFormsModule,ProductosPageModule
                ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
