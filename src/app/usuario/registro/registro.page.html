@@ -1,0 +1,206 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <form [formGroup]="registro">
+      <ion-grid>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div style="text-align: center;">
+            <h3>Crea tu cuenta!</h3>
+          </div>
+          <div style="padding-top: 20px">
+            <ion-item>
+              <ion-input
+                name="name"
+                type="phone"
+                placeholder="Ingrese Cedula"
+                formControlName="usuario"
+                ngModel
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="registro.controls['usuario'].hasError('maxlength')"
+            class="form-text error">
+            <!-- <span *ngIf="this.registro.get('usuario')?.errors?.['pattern']"
+             style="color: red">Sólo ingrese dígitos (0-9)</span> -->
+             <span
+             style="color: red">Máximo 10 dígitos</span>
+          </ion-item>
+            <!-- NOMBRE -->
+            <ion-item>
+              <ion-input
+                name="name"
+                type="text"
+                placeholder="Ingrese Nombre"
+                formControlName="nombre"
+                ngModel
+                required
+              ></ion-input>
+            </ion-item>
+            <!-- APELLIDO -->
+            <ion-item>
+              <ion-input
+                name="name"
+                type="text"
+                placeholder="Ingrese Apellido"
+                formControlName="apellido"
+                ngModel
+                required
+              ></ion-input>
+            </ion-item>
+
+            <!-- DIRECCION -->
+            <ion-item>
+              <ion-input
+                name="name"
+                type="text"
+                placeholder="Ingrese Dirección"
+                formControlName="direccion"
+                ngModel
+                required
+              ></ion-input>
+            </ion-item>
+
+            <!-- TELEFONO -->
+            <ion-item>
+              <ion-input
+                name="name"
+                type="phone"
+                placeholder="Ingrese Teléfono"
+                formControlName="telefono"
+                ngModel
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item
+            class="form-text error"
+            *ngIf="registro.controls['telefono'].hasError('maxlength')"
+
+          >
+            <span style="color: red">Máximo 10 dígitos</span>
+          </ion-item>
+            <ion-item>
+              <ion-input
+                name="name"
+                type="text"
+                placeholder="Ingrese Correo"
+                formControlName="correo"
+                ngModel
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                [type]="password_type"
+                formControlName="password"
+                placeholder="Ingrese contraseña"
+                required
+                show-password
+              ></ion-input>
+              <ion-icon
+                slot="end"
+                name="eye"
+                item-right
+                (click)="togglePasswordMode()"
+              ></ion-icon>
+            </ion-item>
+
+            <ion-item
+            class="form-text error"
+            *ngIf="this.registro.get('password')?.errors?.['min']"
+          >
+            <span style="color: red"
+              >Minimo 8 caracteres</span
+            >
+          </ion-item>
+
+            <ion-item>
+              <ion-input
+                [type]="password_type"
+                placeholder="Repita la contraseña"
+                formControlName="confirmPassword"
+                name="password"
+                required
+              >
+              </ion-input>
+
+              <ion-icon
+                slot="end"
+                name="eye"
+                item-right
+                (click)="togglePasswordMode()"
+              ></ion-icon>
+            </ion-item>
+
+            <ion-item
+              class="form-text error"
+              *ngIf="this.registro.get('password')?.errors?.['pattern'] &&
+              this.registro.get('password').touched "
+            >
+              <span style="color: red"
+                >Debe ingresar al menos 1 letra mayúscula, 1 número,
+                1 caracter @</span
+              >
+            </ion-item>
+            <ion-item
+              class="form-text error"
+              *ngIf="this.registro.get('password').value !== this.registro.get('confirmPassword').value
+                && this.registro.get('confirmPassword').touched"
+            >
+              <span style="color: red">Contraseñas no coinciden</span>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button
+              size="large"
+              type="submit"
+              [disabled]="registro.invalid"
+              (click)="guardarRegistro()"
+              expand="block"
+              >Registrarse</ion-button
+            >
+            <ion-button expand="block" [routerLink]="['/login']">
+              <strong>Ya tiene una cuenta? Ingrese aquí</strong>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-grid>
+    </form>
+    <!-- <form [formGroup]="signUpForm" (ngSubmit)="submitSignupForm()">
+      <div formGroupName="user">
+
+
+        <ion-item>
+          <ion-label>Name*</ion-label>
+          <ion-input type="text" autocapitalize="on" formControlName="name" ngDefaultControl></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label>Password*</ion-label>
+          <ion-input type="password" formControlName="password" ngDefaultControl></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Confirm Password</ion-label>
+          <ion-input type="password" formControlName="password_confirmation" ngDefaultControl></ion-input>
+        </ion-item>
+      </div>
+      <ion-grid>
+        <ion-button expand="block" full type="submit" [disabled]="!signUpForm.valid">
+          <strong>Sign up</strong>
+        </ion-button>
+        <ion-button expand="block" [routerLink]="['/login']">
+          <strong>Alreday a User? Log in here</strong>
+        </ion-button>
+      </ion-grid>
+    </form> -->
+  </ion-content>
+</ion-content>

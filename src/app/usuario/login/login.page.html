@@ -1,0 +1,130 @@
+<!--
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Ingreso</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input
+          type="email"
+          placeholder="Email"
+          name="email"
+
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input
+          type="password"
+          placeholder="Password"
+          name="password"
+
+        ></ion-input>
+        <br />
+      </ion-item>
+
+      <ion-button  expand="block">Ingresar</ion-button>
+      <ion-button
+        expand="block"
+        color="secondary"
+        routerLink="/register"
+        routerDirection="forward"
+        >Registro
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content> -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Ionic App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-title style="text-align:center ;">
+      <h1>Login</h1>
+    </ion-card-title>
+    <ion-card-subtitle>
+      <!-- <h5>Ingresa tus credenciales!</h5> -->
+      <h6>Atencion! Utiliza tu cédula de registro como usuario</h6>
+    </ion-card-subtitle>
+    <ion-card-content>
+      <img
+        src="https://www.rindoapp.com/static/media/login.d281c5f6.png"
+        alt="login"
+      />
+    </ion-card-content>
+  </ion-card>
+  <form (ngSubmit)="login()" [formGroup]="credentials">
+    <div class="input-group">
+      <ion-item>
+        <ion-input
+          type="number"
+          placeholder="Número Cédula"
+          formControlName="usuario"
+        ></ion-input>
+      </ion-item>
+ 
+      <!-- <div *ngIf="(Usuario.dirty || email.touched) && email.errors" class="errors">
+        <span *ngIf="Usuario.errors?.required">Email es requerido</span>
+        <span *ngIf="Usuario.errors?.email">Email es invalido</span>
+      </div> -->
+      <ion-item>
+        <ion-input
+        [type]="password_type"
+          placeholder="Contraseña"
+          formControlName="password"
+        ></ion-input>
+        <ion-icon
+        slot="end"
+        name="eye"
+        item-right
+        (click)="togglePasswordMode()"
+      ></ion-icon>
+      </ion-item>
+      <div
+        *ngIf="(password.dirty || password.touched) && password.errors"
+        class="errors"
+      >
+        <span *ngIf="password.errors?.required">Contraseña requerida</span>
+        <span *ngIf="password.errors?.minlength"
+          >Contraseña necesita tener minimo 6 caracteres</span
+        >
+      </div>
+    </div>
+
+    <ion-button
+      size="large"
+      type="submit"
+      expand="block"
+      [disabled]="!credentials.valid"
+      >Ingresar</ion-button
+    >
+    <ion-button
+      color="danger"
+      size="large"
+      expand="block"
+      [routerLink]="['/registro']"
+      routerLinkActive="router-link-active"
+      >Registrarse</ion-button
+    >
+
+    <!-- <ion-button type="button" expand="block" color="light" fill="clear">Not yet a member? Sign up!
+    </ion-button> -->
+
+    <!-- <ion-button type="button" expand="block" color="tertiary">
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+      Sign in with Google
+    </ion-button>
+    <ion-button type="button" expand="block" color="tertiary">
+      <ion-icon name="logo-apple" slot="start"></ion-icon>
+      Sign in with Apple
+    </ion-button> -->
+  </form>
+</ion-content>

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-subtitle> Actualiza tus datos personales. </ion-card-subtitle>
+    <form [formGroup]="formCliente" *ngIf="cliente">
+      <ion-card-content >
+        <ion-item class="ion-activated">
+          <ion-label>Nombres:</ion-label>
+          <ion-input slot="end" [value]="cliente.nombre"  formControlName="nombre" > </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Apellidos:</ion-label>
+          <ion-input slot="end" formControlName="apellido" [value]="cliente.apellido"> </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Cédula:</ion-label>
+          <ion-input slot="end" formControlName="cedula" [value]="cliente.cedula" readonly> </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Correo:</ion-label>
+          <ion-input slot="end" formControlName="correo" [value]="cliente.correo"> </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Teléfono:</ion-label>
+          <ion-input  slot="end" formControlName="telefono" [value]="cliente.telefono" > </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Dirección:</ion-label>
+          <ion-input slot="end" formControlName="direccion"  [value]="cliente.direccion"> </ion-input>
+        </ion-item>
+      </ion-card-content>
+    </form>
+  </ion-card>
+  <ion-footer>
+    <ion-button expand="full" class="my-button" shape="round" [disabled]="formCliente.invalid"
+    (click)="guardarDatos()"
+      >Guardar</ion-button
+    >
+  </ion-footer>
+</ion-content>

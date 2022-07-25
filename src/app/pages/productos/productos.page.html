@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+
+    </ion-buttons> -->
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menuPrincipal">
+
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button [routerLink]="['/micuenta']" routerLinkActive="router-link-active" >
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title >Productos</ion-title>
+    <!-- <ion-buttons>
+      <ion-button slot="start">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button  (click)="openCart()" #cart>
+      <div class="cart-length">{{ cartItemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-searchbar [(ngModel)]="searchTerm"
+  animated
+  placeholder="Buscar Producto..."></ion-searchbar>
+
+  <ion-item>
+    <ion-label>Categorias</ion-label>
+    <ion-select  (ionChange)="categoriaSeleccionada($event)">
+      <ion-select-option value="-1">Mostrar todos...</ion-select-option>
+      <ion-select-option *ngFor="let item of categorias"
+      [value]="item.Id">{{item.Nombre}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+
+<ion-list *ngFor="let item of listaProductos$ |filter:searchTerm ">
+  <ion-item >
+    <ion-avatar slot="start">
+      <img [src]="'data:image/png;base64,'+item.Imagen" alt="Not found">
+    </ion-avatar>
+    <ion-label>
+      <h2><b>{{item.NombreProducto}}</b></h2>
+      <h3><b>Valor:</b> {{item.Precio | currency}}</h3>
+    </ion-label>
+    <ion-button (click)="addToCart(item)"
+    expand="block" fill="outline">
+      Agregar
+    </ion-button>
+  </ion-item>
+</ion-list>
+<!-- <ion-label *ngIf="listaProductos$.length<=0 || listaProductos$ === null">
+  No se econtraron coincidencias
+</ion-label> -->
+</ion-content>
