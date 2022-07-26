@@ -26,12 +26,10 @@
                 required
               ></ion-input>
             </ion-item>
-            <ion-item
-              class="form-text error"
-              *ngIf="this.registro.get('password')?.errors?.['min']"
+            <ion-item class="form-text error" *ngIf="this.registro.get('usuario').touched && registro.controls['usuario'].hasError('validarCedula')"
             >
               <span style="color: red"
-                >Minimo 8 caracteres</span
+                >Cedula Invalida</span
               >
             </ion-item>
             <ion-item *ngIf="registro.controls['usuario'].hasError('maxlength')"
