@@ -53,7 +53,7 @@ export class RegistroPage implements OnInit {
     };
     this.registro = this.fb.group({
       usuario: ['', [Validators.required,
-      Validators.maxLength(10),RegistroPage.validarCedula]],
+      Validators.maxLength(10),RegistroPage.AEvalidarCedula]],
       nombre: ['', [Validators.required, Validators.minLength(1)]],
       apellido: ['', [Validators.required, Validators.minLength(1)]],
       direccion: ['', [Validators.required, Validators.minLength(1)]],
@@ -189,7 +189,7 @@ export class RegistroPage implements OnInit {
     return this.registro.controls.apellido as FormControl;
   }
 
-  static validarCedula(control: AbstractControl): ValidationErrors | null {
+  static AEvalidarCedula(control: AbstractControl): ValidationErrors | null {
     const cedula = control.value;
     if (cedula.length == 10) {
       var digito_region = (cedula.substring(0, 2));
