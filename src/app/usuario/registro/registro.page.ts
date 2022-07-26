@@ -109,7 +109,7 @@ export class RegistroPage implements OnInit {
         password: this.password.value,
         cliente: this.cliente
       };
-      this.authService.registrarUsuario(this.valoresRegistro).subscribe(
+      this.authService.AE_registrarUsuario(this.valoresRegistro).subscribe(
         async (res) => {
           if (res) {
             await loading.dismiss();
