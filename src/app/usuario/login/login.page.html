@@ -99,11 +99,22 @@
         *ngIf="(password.dirty || password.touched) && password.errors"
         class="errors"
       >
-        <span *ngIf="password.errors?.required">Contraseña requerida</span>
-        <span *ngIf="password.errors?.minlength"
-          >Contraseña necesita tener minimo 6 caracteres</span
-        >
+        <span style="color: red" *ngIf="password.errors?.required">Contraseña requerida</span>
+        <span style="color: red" *ngIf="password.errors?.minlength"
+          >Contraseña necesita tener minimo 6 caracteres</span>
+          <span style="color: red" *ngIf="password.errors?.maxlength"
+          >Contraseña necesita tener máximo 10 caracteres</span>
       </div>
+      <ion-item
+      class="form-text error"
+      *ngIf="this.credentials.get('password')?.errors?.['pattern'] &&
+      this.credentials.get('password').touched "
+    >
+      <span style="color: red"
+        >Debe ingresar al menos 2 letras mayúsculas, 2 letras minusculas, 1 número,
+        1 caracter </span
+      >
+    </ion-item>
     </div>
 
     <ion-button

@@ -32,7 +32,9 @@ export class LoginPage implements OnInit {
     };
     this.credentials = this.fb.group({
       usuario: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4),
+      password: ['', [Validators.required, Validators.minLength(6),
+        Validators.maxLength(10),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$')
         ]],
     });
   }
