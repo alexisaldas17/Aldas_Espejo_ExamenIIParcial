@@ -194,11 +194,16 @@ export class RegistroPage implements OnInit {
   AEvalidarCedula(control: AbstractControl): ValidationErrors | null {
     const cedula = control.value;
     if (cedula.length == 10) {
+      // eslint-disable-next-line prefer-const
       let digito_region = (cedula.substring(0, 2));
       if (digito_region >= 1 && digito_region <= 24) {
+        // eslint-disable-next-line no-var
         var ultimo_digito = cedula.substring(9, 10);
+        // eslint-disable-next-line max-len, no-var, radix
         var pares = parseInt(cedula.substring(1, 2)) + parseInt(cedula.substring(3, 4)) + parseInt(cedula.substring(5, 6)) + parseInt(cedula.substring(7, 8));
+        // eslint-disable-next-line no-var, radix
         var numero1 = parseInt(cedula.substring(0, 1));
+        // eslint-disable-next-line no-var
         var numero1 = (numero1 * 2);
         if (numero1 > 9) { var numero1 = (numero1 - 9); }
         var numero3 = parseInt(cedula.substring(2, 3));
