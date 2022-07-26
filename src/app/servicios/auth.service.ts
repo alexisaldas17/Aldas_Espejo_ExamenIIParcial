@@ -36,9 +36,9 @@ export class AuthService {
   }
 
 
-  login(credentials): Observable<any> {
+  AE_login(credentials): Observable<any> {
    const body =JSON.stringify(credentials);
-    return this.http.post('https://wsproyecto.somee.com/api/LoginCliente/Login', body, httpOptions).pipe(
+    return this.http.post('https://wsproyecto.somee.com/api/LoginCliente/Examen', body, httpOptions).pipe(
       map(res=>{
         if(res!=null){
           console.log(res);

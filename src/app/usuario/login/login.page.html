@@ -52,7 +52,7 @@
     </ion-card-title>
     <ion-card-subtitle>
       <!-- <h5>Ingresa tus credenciales!</h5> -->
-      <h6>Atencion! Utiliza tu cédula de registro como usuario</h6>
+      <h6>Atencion! Utiliza tu correo de registro como usuario</h6>
     </ion-card-subtitle>
     <ion-card-content>
       <img
@@ -65,12 +65,19 @@
     <div class="input-group">
       <ion-item>
         <ion-input
-          type="number"
-          placeholder="Número Cédula"
+          type="text"
+          placeholder="Correo"
           formControlName="usuario"
         ></ion-input>
       </ion-item>
- 
+      <ion-item
+      class="form-text error"
+      *ngIf="this.credentials.get('usuario')?.errors?.['email']"
+    >
+      <span style="color: red"
+        >Correo inválido</span
+      >
+    </ion-item>
       <!-- <div *ngIf="(Usuario.dirty || email.touched) && email.errors" class="errors">
         <span *ngIf="Usuario.errors?.required">Email es requerido</span>
         <span *ngIf="Usuario.errors?.email">Email es invalido</span>

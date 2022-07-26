@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
       contraseña: '',
     };
     this.credentials = this.fb.group({
-      usuario: ['', [Validators.required,Validators.min(1000000000), Validators.max(9999999999)]],
+      usuario: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4),
         ]],
     });
@@ -49,7 +49,7 @@ export class LoginPage implements OnInit {
     await loading.present();
     this.usuario.contraseña = this.credentials.value.password;
     this.usuario.usuario = this.credentials.value.usuario;
-    this.authService.login(this.usuario).subscribe(
+    this.authService.AE_login(this.usuario).subscribe(
       async (res) => {
         console.log(res);
         if(res!=null){
