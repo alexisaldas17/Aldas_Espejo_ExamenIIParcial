@@ -160,6 +160,10 @@
             >
               <span style="color: red">Contraseñas no coinciden</span>
             </ion-item>
+            <span style="color: red" *ngIf="password.errors?.minlength"
+            >Contraseña necesita tener minimo 6 caracteres</span>
+            <span style="color: red" *ngIf="password.errors?.maxlength"
+            >Contraseña necesita tener máximo 10 caracteres</span>
           </div>
           <div padding>
             <ion-button
