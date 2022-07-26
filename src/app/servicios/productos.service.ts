@@ -19,6 +19,7 @@ public cart = [];
 
 public cartItemCount = new BehaviorSubject(0);
 // private headers = {'content-type':'application/json'};
+// private headers = {'content-type':'application/json'};
 constructor(private http: HttpClient, public toastController: ToastController) { }
 
 getProductos(): Observable<Response> {
